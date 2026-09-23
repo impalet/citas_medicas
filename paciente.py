@@ -4,7 +4,7 @@ class Paciente:
     def __init__(self,codigo,nombre,fecha_nacimiento,dni,peso):
         self._codigo=codigo
         self.nombre=nombre
-        self._fecha_nacimiento=fecha_nacimiento
+        self.fecha_nacimiento=fecha_nacimiento
         self.dni=dni
         #necsitamos que pase por el setter antes de ser usado
         self.peso=peso
@@ -31,21 +31,47 @@ class Paciente:
     @nombre.setter
     def nombre(self,valor):
         anterior=""
-
+        valido= True
+        if valor=="":
+            valido=False
+            print("Nombre no valido")
         for letra in valor:
 
             if not letra.isalpha() and not letra.isspace():
-                print("nombre no valido")
+                valido=False
+                
 
             if letra==" " and anterior==" " :
-                print("Nombre no valido")
+                valido=False
+                
             
             anterior=letra
-            
-        self._nombre=valor
+        if valido:
+            self._nombre=valor
+        else:
+            print("Nombre no valido")
+            self._nombre=""
+        
     @fecha_nacimiento.setter
     def fecha_nacimiento(self,valor):
-        self._fecha_nacimiento=valor
+        valido=True
+        if len(valor) !=10:
+            valido=False
+        else:
+            if valor[2] !="/" or valor[5] !="/":
+                valido=False
+        
+        for letra in valor:
+            if not letra.isdigit() and letra !="/":
+                valido=False
+                
+        if valido:
+            self._fecha_nacimiento=valor
+        else:
+            print("Fecha no valida")
+            self._fecha_nacimiento=""   
+                
+        
     @dni.setter
     def dni(self,valor):
         if len(valor) == 8 and valor.isdigit():
@@ -60,3 +86,10 @@ class Paciente:
         else:
             print("Peso ingresado no es valido")
             self._peso=0
+
+paciente1 = Paciente("P001","Jean Carlos","04/12/2000","12345678",70.5)
+
+print(paciente1.nombre)
+print(paciente1.fecha_nacimiento)
+print(paciente1.dni)
+print(paciente1.peso)
