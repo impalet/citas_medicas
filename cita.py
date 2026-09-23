@@ -1,10 +1,10 @@
 from paciente import Paciente
 from medico import Medico
-import paciente
+
 
 class Cita:
 
-    def __init__(self,nro_cita,fecha,hora,diagnostico,paciente,medico):
+    def __init__(self,nro_cita,paciente,fecha,hora,medico,diagnostico):
         self.nro_cita=nro_cita
         self.fecha=fecha
         self.hora=hora
@@ -121,7 +121,4 @@ class Cita:
             print("Medico no valido")
             self._medico=None
 
-#prueba objetos
-paciente1=Paciente("P001","jean carlos","04/12/2000",47201398,70.5)
-medico1=Medico("M001","Dr. Juan Perez","Cardiologia")
-cita1=Cita("C001","23/09/2026","14:00","Gripe",paciente1,medico1)
+
