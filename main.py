@@ -39,6 +39,9 @@ class Main:
 4. Salir
 5. Registrar Paciente
 6. Registrar Cita
+7. Registrar Medico
+8. Listar Medicos
+
 """)
             opcion=int(input("Ingrese una opcion: "))
             match opcion:             
@@ -159,7 +162,32 @@ Peso:                 {paciente.peso}
 
                         print("Cita registrada correctamente")
 
-                      
+                case 7:
+                    encontrado=False
+                                        
+                    cod_med=input("Ingrese codigo de Medico: ")
+                    nom_med=input("Ingrese nombre de Medico: ")
+                    esp_med=input("Ingrese especialidad: ")
+                    
+                    for medico in medicos:
+                        if medico.codigo == cod_med:
+                            encontrado=True
+                            break
+
+                    if encontrado:
+                        print("Medico ya existe!!! ")
+                    else:
+                        medico=Medico(cod_med,nom_med,esp_med)
+
+                        medicos.append(medico)
+
+                        print("Medico registrado correctamente")
+                case 8:
+                    for medico in medicos:
+                        print(f"""Codigo Medico:      {medico.codigo}
+Nombre del Medico:  {medico.nombre}
+Especialidad:       {medico.especialidad}
+""")                      
                 case _:
                     print("Opcion no valida")
         
