@@ -87,9 +87,3 @@ class Paciente:
             print("Peso ingresado no es valido")
             self._peso=0
 
-paciente1 = Paciente("P001","Jean Carlos","04/12/2000","12345678",70.5)
-
-print(paciente1.nombre)
-print(paciente1.fecha_nacimiento)
-print(paciente1.dni)
-print(paciente1.peso)
