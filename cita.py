@@ -2,6 +2,8 @@ from paciente import Paciente
 from medico import Medico
 
 
+
+
 class Cita:
 
     def __init__(self,nro_cita,paciente,fecha,hora,medico,diagnostico):
